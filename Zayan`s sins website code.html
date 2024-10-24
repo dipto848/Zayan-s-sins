@@ -11,6 +11,19 @@
     </style>
 </head>
 <body>
+    <div id="popup" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center;">
+        <div style="position: relative; background-color: white; padding: 20px; width: 50%; max-width: 600px; text-align: center; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
+            <button onclick="closePopup()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer;">✖</button>
+            <h2>Our website does not use cookies.</h2>
+            <p>No need for this message. Just close it.</p>
+        </div>
+    </div>
+
+    <script>
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
 <img src="zayan.jpg" alt="zayan.jpg" style="width: 108px; height: 144px; float: left;">
  <h1>Zayan's Sins</h1>
     <h3>News about all the sins Zayan commits!</h3>
