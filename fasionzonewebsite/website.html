@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fashion Store Header</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+</head>
+<body class="font-sans">
+
+  <!-- Black Marquee -->
+  <div class="bg-black text-white text-sm py-2 overflow-hidden">
+    <marquee>
+      ✨ Authentic Products! | Delivery all across Australia | Trendy Fashion for Every Season ✨
+    </marquee>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+
+      <!-- Left Side (Browse Products) -->
+      <div class="w-1/3">
+        <div class="relative inline-block group">
+          <button class="font-medium hover:text-gray-700 flex items-center gap-1">
+            Browse Our Products
+            <i class="fa-solid fa-chevron-down text-xs"></i>
+          </button>
+
+          <!-- Dropdown -->
+          <div class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md 
+                      opacity-0 invisible group-hover:opacity-100 group-hover:visible 
+                      transition-all duration-200 z-50">
+            <ul class="py-2 text-sm">
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Men’s Wear</li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Women’s Wear</li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Kids Collection</li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Accessories</li>
+              <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">New Arrivals</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Logo -->
+      <div class="w-1/3 flex justify-center">
+        <h1 class="text-2xl font-bold tracking-wide">
+          FASHION<span class="text-gray-500">ZONE</span>
+        </h1>
+      </div>
+
+      <!-- Right Icons -->
+      <div class="w-1/3 flex justify-end items-center gap-5">
+
+        <a href="#" class="text-xl hover:text-green-500">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+        <a href="#" class="text-xl hover:text-blue-500">
+          <i class="fa-brands fa-facebook-messenger"></i>
+        </a>
+
+        <a href="#" class="text-xl hover:text-blue-700">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+
+        <a href="#" class="text-xl hover:text-gray-700">
+          <i class="fa-solid fa-phone"></i>
+        </a>
+
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Slider Container -->
+  <div class="relative w-full overflow-hidden">
+
+    <!-- Slides -->
+    <div id="slider" class="flex transition-transform duration-700 ease-in-out">
+      <img src="https://picsum.photos/id/1011/1600/600" class="w-full flex-shrink-0">
+      <img src="https://picsum.photos/id/1015/1600/600" class="w-full flex-shrink-0">
+      <img src="https://picsum.photos/id/1016/1600/600" class="w-full flex-shrink-0">
+      <img src="https://picsum.photos/id/1020/1600/600" class="w-full flex-shrink-0">
+    </div>
+
+    <!-- Prev Button -->
+    <button onclick="prevSlide()"
+      class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white px-4 py-2 rounded-full hover:bg-black">
+      ❮
+    </button>
+
+    <!-- Next Button -->
+    <button onclick="nextSlide()"
+      class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white px-4 py-2 rounded-full hover:bg-black">
+      ❯
+    </button>
+
+    <!-- Dots -->
+    <div class="absolute bottom-4 w-full flex justify-center gap-2">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const slider = document.getElementById("slider");
+    const slides = slider.children.length;
+    const dots = document.querySelectorAll(".dot");
+
+    let index = 0;
+
+    function updateSlider() {
+      slider.style.transform = `translateX(-${index * 100}%)`;
+
+      dots.forEach((dot, i) => {
+        dot.className =
+          "dot w-3 h-3 rounded-full cursor-pointer " +
+          (i === index ? "bg-white" : "bg-white/50");
+      });
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slides;
+      updateSlider();
+    }
+
+    function prevSlide() {
+      index = (index - 1 + slides) % slides;
+      updateSlider();
+    }
+
+    dots.forEach((dot, i) => {
+      dot.className = "dot w-3 h-3 rounded-full bg-white/50 cursor-pointer";
+      dot.addEventListener("click", () => {
+        index = i;
+        updateSlider();
+      });
+    });
+
+    // Auto slide every 3 seconds
+    setInterval(nextSlide, 8000);
+
+    updateSlider();
+  </script>
+  <div class="py-10 px-32">
+  <h2 class="text-3xl md:text-4xl font-semibold text-black mb-4">
+  Crafted for Elegance & Authenticity
+</h2>
+
+<p class="text-base text-gray-700 leading-relaxed max-w-3xl">
+  Discover a refined collection of original Pakistani dresses designed for those who value
+  authenticity, craftsmanship, and timeless style. Each piece is thoughtfully tailored using
+  premium fabrics, hand-picked embellishments, and precise detailing to ensure comfort,
+  elegance, and a flawless fit. From everyday wear to festive occasions, our designs reflect
+  sophistication while staying true to traditional artistry.
+</p>
+</div>
+
+<!-- 3 Square Images with Equal Spacing (Edges + Between) -->
+<div class="max-w-7xl mx-auto px-6 pt-10">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+
+    <!-- Image 1 -->
+    <div class="relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+      <img src="https://cdn.shopify.com/s/files/1/1762/5129/files/indian-women-in-salwar-kameez.jpg" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300">
+      <img src="https://assets.myntassets.com/w_412,q_30,dpr_3,fl_progressive,f_webp/assets/images/2024/OCTOBER/9/9LCJJiHq_934ad89450404b2f914f20fa439a597d.jpg" class="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 transition-opacity duration-300">
+    </div>
+
+    <!-- Image 2 -->
+    <div class="relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+      <img src="https://assets.myntassets.com/w_412,q_30,dpr_3,fl_progressive,f_webp/assets/images/2024/OCTOBER/16/IJV7f7KX_2c67021049694df4848b7c99bd3f8e6b.jpg" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300">
+      <img src="https://i.pinimg.com/736x/36/dc/35/36dc35c7f1d800652262ad81f3bcc7e0.jpg" class="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 transition-opacity duration-300">
+    </div>
+
+    <!-- Image 3 -->
+    <div class="relative aspect-square overflow-hidden rounded-lg cursor-pointer">
+      <img src="https://assets.myntassets.com/h_1440,q_75,w_1080/v1/assets/images/35549205/2025/7/15/d9f992b1-1ee8-4659-8c1a-64cd4f42034b1752589657746-SKYLEE-Floral-Embroidered-Square-Neck-Straight-Kurta-With-Tr-1.jpg" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300">
+      <img src="https://m.media-amazon.com/images/I/718jbduwerL._UY1000_.jpg" class="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 transition-opacity duration-300">
+    </div>
+
+  </div>
+</div>
+
+    <div class="container mx-auto w-11/12 max-w-6xl py-10">
+
+  <!-- DESKTOP LAYOUT -->
+  <div class="hidden md:grid grid-cols-3 items-center gap-8">
+
+    <!-- Left Image -->
+    <div class="relative flex justify-center">
+      <img
+        src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=600&q=80"
+        class="w-64 h-[450px] object-cover shadow-2xl"
+        alt="Green Dress"
+      />
+    </div>
+
+    <!-- Center Text -->
+    <div class="text-center px-6">
+      <h1 class="text-5xl font-normal mb-6 text-black leading-tight">
+        Pakistani Original<br>Dress
+      </h1>
+
+      <p class="text-base text-gray-700 leading-relaxed mb-8 max-w-md mx-auto">
+        100% Original Pakistani Branded Dresses.
+        Now You Can Customize Your Sizes For Free.
+        Exclusively Tailored With Hand Picked Tassels
+        and Accessories Same As The Model.
+      </p>
+
+      <button class="bg-black text-white px-8 py-4 text-sm font-bold tracking-[0.2em] uppercase hover:bg-gray-800 transition">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Right Image -->
+    <div class="relative flex justify-center">
+      <img
+        src="https://www.pakstyle.pk/cdn/shop/files/p15380-embroidered-net-maxi-dress-update.jpg?v=1759485399&width=1128"
+        class="w-64 h-[450px] object-cover shadow-2xl"
+        alt="White Dress"
+      />
+    </div>
+
+  </div>
+
+  <!-- MOBILE LAYOUT -->
+  <div class="md:hidden flex gap-6 items-start">
+
+    <!-- Text Left -->
+    <div class="w-1/2">
+      <h1 class="text-3xl font-normal mb-4 text-black">
+        Pakistani Original Dress
+      </h1>
+
+      <p class="text-sm text-gray-700 mb-6">
+        100% Original Pakistani Branded Dresses with free size customization.
+      </p>
+
+      <button class="bg-black text-white px-5 py-3 text-xs font-bold tracking-widest uppercase">
+        Shop Now
+      </button>
+    </div>
+
+    <!-- Image Slider Right -->
+    <div class="w-1/2 overflow-hidden relative">
+      <div id="mobileSlider" class="flex transition-transform duration-700 ease-in-out">
+        <img
+          src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=600&q=80"
+          class="w-full h-[300px] object-cover flex-shrink-0"
+        />
+        <img
+          src="https://www.pakstyle.pk/cdn/shop/files/p15380-embroidered-net-maxi-dress-update.jpg?v=1759485399&width=1128"
+          class="w-full h-[300px] object-cover flex-shrink-0"
+        />
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  let slideIndex = 0;
+  const slider = document.getElementById("mobileSlider");
+  const slides = slider.children.length;
+
+  setInterval(() => {
+    slideIndex = (slideIndex + 1) % slides;
+    slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+  }, 3000);
+</script>
+
+
+    
+<div class="max-w-5xl mx-auto px-6 py-10">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <!-- Box 1 -->
+    <div class="bg-white border rounded-lg p-5 text-center shadow-sm">
+      <!-- Icon Placeholder -->
+      <div class="w-32 h-32 mx-auto mb-3 border rounded-md flex items-center justify-center">
+        <video autoplay muted loop playsinline>
+  <source src="./truckicon.mp4" type="video/mp4">
+</video>
+
+      </div>
+
+      <h3 class="text-lg font-semibold mb-2">
+        Home Delivery Available
+      </h3>
+      <p class="text-sm text-gray-600">
+        We provide fast and reliable home delivery so you can receive your products safely at your doorstep.
+      </p>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="bg-white border rounded-lg p-5 text-center shadow-sm">
+      <!-- Icon Placeholder -->
+      <div class="w-32 h-32 mx-auto mb-3 border rounded-md flex items-center justify-center">
+        <video autoplay muted loop playsinline>
+  <source src="./verified.mp4" type="video/mp4">
+</video>
+      </div>
+
+      <h3 class="text-lg font-semibold mb-2">
+        100% Genuine Products
+      </h3>
+      <p class="text-sm text-gray-600">
+        All our products are authentic and quality-checked to ensure the best shopping experience for you.
+      </p>
+    </div>
+
+    <!-- Box 3 -->
+    <div class="bg-white border rounded-lg p-5 text-center shadow-sm">
+      <!-- Icon Placeholder -->
+      <div class="w-32 h-32 mx-auto mb-3 border rounded-md flex items-center justify-center">
+        <video autoplay muted loop playsinline>
+  <source src="./returnicon.mp4" type="video/mp4">
+</video>
+      </div>
+
+      <h3 class="text-lg font-semibold mb-2">
+        Return Policy Available
+      </h3>
+      <p class="text-sm text-gray-600">
+        Easy and hassle-free return policy available if the product does not meet your expectations.
+      </p>
+    </div>
+
+  </div>
+</div>
+<!-- Footer -->
+<footer class="bg-black text-white pt-10 pb-6">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Top Sections -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+
+      <!-- Quick Actions -->
+      <div>
+        <h4 class="text-sm font-semibold mb-3 uppercase tracking-wide">
+          Quick Actions
+        </h4>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><a href="#" class="hover:text-white">Shop Now</a></li>
+          <li><a href="#" class="hover:text-white">New Arrivals</a></li>
+          <li><a href="#" class="hover:text-white">Best Sellers</a></li>
+          <li><a href="#" class="hover:text-white">Offers</a></li>
+        </ul>
+      </div>
+
+      <!-- Terms & Policy -->
+      <div>
+        <h4 class="text-sm font-semibold mb-3 uppercase tracking-wide">
+          Terms & Policy
+        </h4>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+          <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white">Return Policy</a></li>
+          <li><a href="#" class="hover:text-white">Refund Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div>
+        <h4 class="text-sm font-semibold mb-3 uppercase tracking-wide">
+          Support
+        </h4>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><a href="#" class="hover:text-white">Contact Us</a></li>
+          <li><a href="#" class="hover:text-white">FAQs</a></li>
+          <li><a href="#" class="hover:text-white">Shipping Info</a></li>
+          <li><a href="#" class="hover:text-white">Track Order</a></li>
+        </ul>
+      </div>
+
+      <!-- Payment Methods -->
+      <div>
+        <h4 class="text-sm font-semibold mb-3 uppercase tracking-wide">
+          Payment Methods
+        </h4>
+        <div class="flex gap-4 text-2xl text-gray-300">
+          <i class="fa-brands fa-cc-visa hover:text-white"></i>
+          <i class="fa-brands fa-cc-mastercard hover:text-white"></i>
+          <i class="fa-brands fa-cc-amex hover:text-white"></i>
+          <i class="fa-brands fa-cc-paypal hover:text-white"></i>
+        </div>
+      </div>
+
+    </div>
+    <a
+  href="https://m.me/yourpageusername"
+  target="_blank"
+  class="fixed bottom-8 right-8 z-50 flex flex-col items-center gap-1 group"
+>
+  <!-- Messenger Button -->
+  <div class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg
+              hover:scale-105 transition-transform">
+    <i class="fa-brands fa-facebook-messenger text-white text-3xl"></i>
+  </div>
+
+  <!-- Text -->
+  <span class="text-xs font-semibold text-gray-800 group-hover:text-blue-600">
+    Message Us
+  </span>
+</a>
+
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-700 pt-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-gray-500">
+        © 2026 Your Fashion Store. All rights reserved.
+      </p>
+      <p class="text-xs text-gray-500">
+        Designed with ❤️ for modern fashion
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+
+  </div>
+</footer>
+
+
+
+
+</body>
+</html>
+
+
+
+</body>
+</html>
+
+
+</body>
+</html>
